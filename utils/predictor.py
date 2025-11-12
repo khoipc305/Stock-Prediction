@@ -9,37 +9,32 @@ import pandas as pd
 from pathlib import Path
 import sys
 
-# Add parent directory to path
-sys.path.append(str(Path(__file__).parent.parent.parent))
-
-try:
-    from src.models_lstm import PriceLSTM, EarlyFusionLSTM
-except ImportError:
-    # Fallback: define models here if import fails
-    class PriceLSTM(nn.Module):
-        def __init__(self, input_size, hidden_size=64, num_layers=2, dropout=0.2, output_size=1):
-            super(PriceLSTM, self).__init__()
-            self.lstm = nn.LSTM(input_size, hidden_size, num_layers, dropout=dropout if num_layers > 1 else 0, batch_first=True)
-            self.dropout = nn.Dropout(dropout)
-            self.fc = nn.Linear(hidden_size, output_size)
-        
-        def forward(self, x):
-            lstm_out, _ = self.lstm(x)
-            out = self.dropout(lstm_out[:, -1, :])
-            return self.fc(out)
+# Model definitions (embedded for deployment compatibility)
+# Define models here since src module may not be available in deployment
+class PriceLSTM(nn.Module):
+    def __init__(self, input_size, hidden_size=64, num_layers=2, dropout=0.2, output_size=1):
+        super(PriceLSTM, self).__init__()
+        self.lstm = nn.LSTM(input_size, hidden_size, num_layers, dropout=dropout if num_layers > 1 else 0, batch_first=True)
+        self.dropout = nn.Dropout(dropout)
+        self.fc = nn.Linear(hidden_size, output_size)
     
-    class EarlyFusionLSTM(nn.Module):
-        def __init__(self, price_features, sentiment_features, hidden_size=64, num_layers=2, dropout=0.2, output_size=1):
-            super(EarlyFusionLSTM, self).__init__()
-            input_size = price_features + sentiment_features
-            self.lstm = nn.LSTM(input_size, hidden_size, num_layers, dropout=dropout if num_layers > 1 else 0, batch_first=True)
-            self.dropout = nn.Dropout(dropout)
-            self.fc = nn.Linear(hidden_size, output_size)
-        
-        def forward(self, x):
-            lstm_out, _ = self.lstm(x)
-            out = self.dropout(lstm_out[:, -1, :])
-            return self.fc(out)
+    def forward(self, x):
+        lstm_out, _ = self.lstm(x)
+        out = self.dropout(lstm_out[:, -1, :])
+        return self.fc(out)
+
+class EarlyFusionLSTM(nn.Module):
+    def __init__(self, price_features, sentiment_features, hidden_size=64, num_layers=2, dropout=0.2, output_size=1):
+        super(EarlyFusionLSTM, self).__init__()
+        input_size = price_features + sentiment_features
+        self.lstm = nn.LSTM(input_size, hidden_size, num_layers, dropout=dropout if num_layers > 1 else 0, batch_first=True)
+        self.dropout = nn.Dropout(dropout)
+        self.fc = nn.Linear(hidden_size, output_size)
+    
+    def forward(self, x):
+        lstm_out, _ = self.lstm(x)
+        out = self.dropout(lstm_out[:, -1, :])
+        return self.fc(out)
 
 from .preprocessor import prepare_features, create_sequences
 from sklearn.preprocessing import StandardScaler

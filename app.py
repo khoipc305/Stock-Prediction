@@ -11,9 +11,7 @@ from datetime import datetime, timedelta
 import sys
 from pathlib import Path
 
-# Add parent directory to path
-sys.path.append(str(Path(__file__).parent.parent))
-
+# Import utilities (no need to modify path in deployment)
 from utils.data_fetcher import fetch_stock_data
 from utils.preprocessor import prepare_features
 from utils.predictor import StockPredictor
