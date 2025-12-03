@@ -130,14 +130,14 @@ A comprehensive machine learning pipeline for stock price prediction that combin
 
 ## 🛠️ Setup
 
+### 1. Create Virtual Environment
 ```bash
-# Python 3.10+ recommended
+# Python 3.10+ recommended (Python 3.14 tested)
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
 ```
 
-Install dependencies:
+### 2. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
@@ -220,21 +220,20 @@ python -m src.evaluate --dataset data/processed/dataset.parquet --weights models
 
 ### Option 3: Interactive Notebooks (Recommended)
 ```bash
-jupyter notebook
+jupyter lab notebooks/
 # Run notebooks in order:
-# 01 → 02 → 02b (NLP) → 03 → 03b (ML) → 04 → 05 (SHAP) → 06 (Plotly)
+# 01 → 02 → 02b (NLP) → 02c → 03 → 03b (ML) → 04 → 05 (SHAP)
 ```
 
 **Notebook Overview:**
 1. `01_download_and_eda.ipynb` - Data collection and exploration
 2. `02_sentiment_aggregation.ipynb` - VADER sentiment analysis
-3. `02b_advanced_nlp.ipynb` - Tokenization + BERT sentiment ✅ NEW
-4. `02c_tokenization_demo.ipynb` - Standalone tokenization demo ✅ NEW
+3. `02b_advanced_nlp.ipynb` - Tokenization + BERT sentiment ✅
+4. `02c_tokenization_demo.ipynb` - Standalone tokenization demo ✅
 5. `03_train_lstm.ipynb` - LSTM model training
-6. `03b_traditional_ml_models.ipynb` - XGBoost + Random Forest ✅ NEW
+6. `03b_traditional_ml_models.ipynb` - XGBoost + Random Forest ✅
 7. `04_backtest_and_plots.ipynb` - Backtesting and evaluation
 8. `05_shap_WORKING.ipynb` - SHAP interpretability
-9. `06_plotly_dashboard.ipynb` - Interactive dashboards
 
 ---
 
@@ -257,23 +256,29 @@ jupyter notebook
 │   ├── raw/              # Price & FinViz news data
 │   ├── interim/          # Processed sentiment
 │   └── processed/        # Final merged datasets
-├── models/               # Trained models (.pt, .pkl files)
-├── notebooks/            # 8 comprehensive notebooks
+├── deployment/           # Streamlit web application
+│   ├── app.py           # Main Streamlit app
+│   ├── models/          # Model files for deployment
+│   ├── utils/           # Prediction utilities
+│   ├── README.md        # Deployment guide
+│   └── requirements.txt # Deployment dependencies
+├── models/              # Trained models (.pt, .pkl files)
+├── notebooks/           # 8 comprehensive notebooks
 │   ├── 01_download_and_eda.ipynb
 │   ├── 02_sentiment_aggregation.ipynb
-│   ├── 02b_advanced_nlp.ipynb              ✅ NEW (Tokenization + BERT)
-│   ├── 02c_tokenization_demo.ipynb         ✅ NEW (Standalone demo)
+│   ├── 02b_advanced_nlp.ipynb              ✅
+│   ├── 02c_tokenization_demo.ipynb         ✅
 │   ├── 03_train_lstm.ipynb
-│   ├── 03b_traditional_ml_models.ipynb     ✅ NEW (XGBoost + RF)
+│   ├── 03b_traditional_ml_models.ipynb     ✅
 │   ├── 04_backtest_and_plots.ipynb
-│   ├── 05_shap_WORKING.ipynb
-│   └── 06_plotly_dashboard.ipynb
+│   └── 05_shap_WORKING.ipynb
 ├── reports/
-│   └── figures/          # Visualizations + dashboards
+│   └── figures/          # Visualizations (PNG files)
 ├── src/
 │   ├── __init__.py
 │   ├── utils.py          # Utility functions
 │   ├── download_prices.py
+│   ├── safe_file_utils.py # OneDrive-safe file operations
 │   ├── build_sentiment.py
 │   ├── make_dataset.py   # Feature engineering
 │   ├── models_lstm.py    # LSTM architectures
@@ -282,10 +287,8 @@ jupyter notebook
 ├── scrape_finviz_data.py # News scraper
 ├── process_finviz_data.py
 ├── run_pipeline.py
+├── generate_pdf_report.py
 ├── requirements.txt
-├── QUICKSTART.md
-├── PROJECT_REQUIREMENTS.md
-├── FINAL_SUBMISSION_GUIDE.md  ✅ NEW
 └── README.md
 ```
 
@@ -409,6 +412,46 @@ For questions or issues, please refer to:
 - `FINAL_SUBMISSION_GUIDE.md` - Submission guidelines
 - `PROJECT_REQUIREMENTS.md` - Detailed requirements
 
+## 🌐 Deployment
+
+### Run Streamlit App Locally
+
+```bash
+# Activate virtual environment
+source .venv/bin/activate
+
+# Run the app with correct Python interpreter
+.venv/bin/python -m streamlit run deployment/app.py
+```
+
+**Access the app at:** http://localhost:8501
+
+### App Features
+- ✅ Real-time stock data fetching (Yahoo Finance)
+- ✅ LSTM model predictions
+- ✅ Technical indicators (RSI, MACD, Moving Averages)
+- ✅ Interactive Plotly charts
+- ✅ Buy/Hold/Sell recommendations
+
+### Troubleshooting
+If you encounter import errors, ensure you're using the virtual environment's Python:
+```bash
+which python  # Should show: .venv/bin/python
+```
+
+---
+
+## 📦 GitHub Repository
+
+**Repository:** https://github.com/khoipc305/Stock-Prediction
+
+### Recent Updates (Dec 2025)
+- ✅ Cleaned up unnecessary files (HTML dashboards, duplicate deployment files)
+- ✅ Fixed import paths for relative imports
+- ✅ Streamlined project structure
+- ✅ Updated deployment configuration
+- ✅ All notebooks tested and working
+
 ---
 
 ## 📄 License & Disclaimer
@@ -420,4 +463,5 @@ For questions or issues, please refer to:
 ---
 
 **Project Status:** ✅ Complete - All Requirements Satisfied (100%)  
-**Last Updated:** November 11, 2025
+**Last Updated:** December 2, 2025  
+**GitHub:** https://github.com/khoipc305/Stock-Prediction
