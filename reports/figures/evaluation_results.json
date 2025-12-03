@@ -1,0 +1,23 @@
+{
+  "model_metrics": {
+    "mae": 0.014852629885952234,
+    "rmse": 0.02233303405843917,
+    "mape": 5388.19682365418,
+    "direction_accuracy": 0.5004347826086957
+  },
+  "baseline_metrics": {
+    "mae": 0.014797553741736058,
+    "rmse": 0.02195204741855959,
+    "mape": 99.86950281812493,
+    "direction_accuracy": 0.0013043478260869566
+  },
+  "test_samples": 2300,
+  "config": {
+    "model_type": "early_fusion",
+    "input_size": 25,
+    "hidden_size": 64,
+    "num_layers": 2,
+    "dropout": 0.2,
+    "lookback": 30
+  }
+}

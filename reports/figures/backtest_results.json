@@ -1,0 +1,10 @@
+{
+  "strategy": "long",
+  "total_return": -0.29449237373267956,
+  "buy_hold_return": 28.522303930698744,
+  "sharpe_ratio": -0.025566074969305925,
+  "max_drawdown": -0.6550573964167634,
+  "win_rate": 0.24,
+  "avg_daily_return": -2.5587495373746886e-05,
+  "transaction_cost": 0.005
+}

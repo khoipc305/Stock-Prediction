@@ -1,0 +1,126 @@
+{
+  "xgboost": {
+    "accuracy": 0.4515021459227468,
+    "confusion_matrix": [
+      [
+        190,
+        1,
+        664
+      ],
+      [
+        75,
+        0,
+        313
+      ],
+      [
+        222,
+        3,
+        862
+      ]
+    ],
+    "top_features": [
+      {
+        "feature": "volatility_10d",
+        "importance": 0.0961429551243782
+      },
+      {
+        "feature": "volatility_5d",
+        "importance": 0.07318399101495743
+      },
+      {
+        "feature": "return_5d",
+        "importance": 0.06746165454387665
+      },
+      {
+        "feature": "Close",
+        "importance": 0.06365881115198135
+      },
+      {
+        "feature": "High",
+        "importance": 0.06198125705122948
+      },
+      {
+        "feature": "return_1d",
+        "importance": 0.05855083465576172
+      },
+      {
+        "feature": "Volume",
+        "importance": 0.05818253755569458
+      },
+      {
+        "feature": "macd_histogram",
+        "importance": 0.05607454851269722
+      },
+      {
+        "feature": "price_to_ma5",
+        "importance": 0.055212490260601044
+      },
+      {
+        "feature": "volume_ratio",
+        "importance": 0.05506422743201256
+      }
+    ]
+  },
+  "random_forest": {
+    "accuracy": 0.4446351931330472,
+    "confusion_matrix": [
+      [
+        273,
+        0,
+        582
+      ],
+      [
+        134,
+        0,
+        254
+      ],
+      [
+        324,
+        0,
+        763
+      ]
+    ],
+    "top_features": [
+      {
+        "feature": "volatility_10d",
+        "importance": 0.08085742723916703
+      },
+      {
+        "feature": "return_1d",
+        "importance": 0.07177930730903376
+      },
+      {
+        "feature": "volatility_5d",
+        "importance": 0.06875930874589095
+      },
+      {
+        "feature": "overnight_return",
+        "importance": 0.06672352603928638
+      },
+      {
+        "feature": "Volume",
+        "importance": 0.06648204767892646
+      },
+      {
+        "feature": "volume_ratio",
+        "importance": 0.06578326241178237
+      },
+      {
+        "feature": "price_to_ma5",
+        "importance": 0.061373324174362996
+      },
+      {
+        "feature": "return_5d",
+        "importance": 0.06084391148039523
+      },
+      {
+        "feature": "macd_signal",
+        "importance": 0.0583574611864615
+      },
+      {
+        "feature": "rsi",
+        "importance": 0.056816516892047385
+      }
+    ]
+  }
+}

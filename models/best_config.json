@@ -1,0 +1,15 @@
+{
+  "model_type": "early_fusion",
+  "lookback": 30,
+  "hidden_size": 64,
+  "num_layers": 2,
+  "dropout": 0.2,
+  "learning_rate": 0.001,
+  "batch_size": 32,
+  "optimizer": "Adam",
+  "loss_function": "MSE",
+  "early_stopping_patience": 8,
+  "features": "Price + Sentiment",
+  "train_end": "2021-12-31",
+  "val_end": "2023-12-31"
+}
