@@ -2,6 +2,7 @@
 **Type:** Supervised Learning + Natural Language Processing + Traditional ML  
 **Course:** CS4200 - Machine Learning  
 **Institution:** Cal Poly Pomona
+## DEMO VIDEO LINK: https://www.youtube.com/watch?v=IbzxAtWPUvw
 
 ## 📊 Project Overview
 
